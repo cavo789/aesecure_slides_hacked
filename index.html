@@ -1,0 +1,1058 @@
+<!DOCTYPE HTML>
+<html lang="fr-fr" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Christophe Avonture" />
+    <meta name="designer" content="Christophe Avonture" />
+    <meta name="keywords" content="Christophe Avonture, Slides, aeSecure, Est-ce que mon site a &eacute;t&eacute; hack&eacute;" />
+    <meta name="description" content="Présentation sur la sécurité des sites Apache et plus spécifiquement Joomla!®.  Quelques trucs et astuces pour débusquer les virus sur son site, quels outils utiliser pour trouver les virus présents sur son site web, comment s'en débarasser, ..." />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:creator" content="@aesecure" />
+    <meta name="twitter:title" content="aeSecure, optimisation et sécurisation de vos sites web Apache" />
+    <meta property="og:url" content="https://www.avonture.be/aesecure_slides_hacked/index.html" />
+    <meta property="fb:app_id" content="277546802408059" />
+    <meta property="og:type" content="article" />
+    <meta property="og:image" content="https://www.avonture.be/aesecure_slides_hacked/img/social_intro.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="603" />
+    <meta property="og:title" content="aeSecure - Est-ce que mon site a &eacute;t&eacute; hack&eacute; ? Est-il propre ? Comment m&rsquo;en assurer ?" />
+    <meta property="og:site_name" content="Slides | aeSecure.com" />
+    <meta property="og:description" content="Présentation sur la sécurité des sites Apache et plus spécifiquement Joomla!®.  Quelques trucs et astuces pour débusquer les virus sur son site, quels outils utiliser pour trouver les virus présents sur son site web, comment s'en débarasser, ..." />
+
+    <title>aeSecure - Est-ce que mon site a &eacute;t&eacute; hack&eacute; ? Est-il propre ? Comment m&rsquo;en assurer
+        ?</title>
+
+    <link href="data:image/x-icon;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQEAYAAABPYyMiAAAABmJLR0T///////8JWPfcAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAACXZwQWcAAAAQAAAAEABcxq3DAAAHeUlEQVRIx4XO+VOTdx7A8c/z5HmSJ0CCCYiGcF9BkVOQiiA0A6hYxauyKqutHQW1u7Z1QXS8sYoDWo9WHbQV2LWOiKDWCxS1XAZUQAFRkRsxIcFw5HzyPM93/4Cdzr5/f828QV0xK9k5wXeb5nZYvSt5qFdri1msEIqbdcKYVYoI+L+Zbmy7t8UNwHJnx+c/aHjJk9z682nyhd99WpBUHDXh1PeJTGSiXP/a46zHZKBe8SGEr5bf8i1t+NFeESyfN+F2V2gO8IioBjBe2+aW0fm/ECGEEALALOwwswYA5jHH6D6ZA7FXnObkqtZSwd5hs4yjXvZDEcKEXX89gJmzvhVs8QOAMrQfXSSCYC/mjDXEVhMvCR3B1wejnbAHbhkc2WXMZibKJxbVAA9GvG7DI+gGrbPRvNQ4ajjhOmiMNew3yBVfO5mnHnEJ423ElfgZvOCgnzWRLqE9aoJVAU29qn28EiwQdLADjqOTQMMwnkhAAawEJQAcxVIx39hK9jnbwjYenDVWOXZaz/i847fyXwqi8N3Cdsqf2iUtxzbhvbiWukj30DvpGEjV9Ns6bJkAxEZZoew63KJn06W2nwAoPl6E10x0Oyrdnrh1NchgTuMmtMC5gkcSd4lLSWVcLHJCYtSJozsgBRIA5oAR1CskzH0UiTzna03RM1OCjG4S/b8DEwJVruc+ZbFi5gmlgRCYC9GQaktHUxAL4FCXiJKOANhNKAWJOwGMjTI/2W4A1t8WbwuVx9NFulrdTrtzb/O7Et81a73crrmp3G/OvTnN3WXqtPvexwn2CjoGpQD8ECwFHo+3cWspGeUN0Q5nZldE4gAT0j773ngANlTiKd0CgNImlk6sA+B9hSkxMQDmbWwwfgDAXET94h4ArMCy06IEmMhH+TAe0Hz4156zWpeFw2dZUyCjLS1RVY3zxpbW+ZLd5B3yC1Ui4VDy5enPpgK8KC9ZUCNjivyfCzBWCdEmqAuqZQH4GyiCCgEQlI+GjZoBzHbcN+wGAGY3U8S8B0Q+epH0Ig3m8I2iOyLKclMQQdfSR2xpuiac5UmbQ1600du5wr9XpeUviF/+m2BQYZIfEq9ILkEL8c1YfOMcwgXPnv97dJhjfJFTt+j03CXn13hLnB+0TpW0aLu0N6RnuOVcHKc1GdgMLAh7Othofc65c/UjgzwB/2e+3OJM+pA1pHT8KcqEOcwrh1+YXF4l1qXFqFKth+4/xVnuVXSGqVox5Hrf1mjWH931+rLeF7WcqI4ZDvUOmv1hMS7O4veT5V/3dMRYlSx9r9opmDaaW5M82QI0yaUfr8NyyRPE23ed3IDgARmJx9ml2tc7tHtJqDbKkYqMe8hbC3JQr6rGvqKN7P51+RjJ7uHE22/3/6YJ1JgKIzI/08f2/UOWP6AjLlPXW++ml+qWMlb0e7D6z972W5ZjBK+NtwdfOEvBaPB8XkpxxutC6wOrt1+z5Jn0oiglR08uc9I418u6x9NtK+hnALxo0EIerCeruMfcSwAm21hsvAyAV6v3fvwChqTZkjKpAYCqEh4Tdky5TlcObZocv4O9PTp9gThFnSzItrpZ5YvOtU8+qWsYL5bj2HtsDRYoFHmGT+aM7jaFkot8JL4nM0a09dhqIGTdb4qbcNUhgB7R/dy7DwF6N9Qfr2UBuk41HWg0AxhC8Td4FYDwnahFFAbA43gdPB2A5xb3DI/MK/e6fkg+8GXRcAC5At+NoREx5onVY+0uRTJNxNSQcOEKgvgJYmACHVz+PauYdFx5xDKgFWtVlq2mpNH20V30czTAJbGFfE/H1pmHgxCAg8Kv1D8BwGI/0j5yFgDfyr3iegEEQQJvSgsA32HfYm8BDBeMCYYrqSbvVa/21937sw+FyE+GPeZ/jtQoHFrxq1w1Z0L+yI+XWxN1KRJtto/3EWdSD9wu4UZmOsO+2S684aP2+SNablfuu8t/iH+AQi450/YBWDU6lVYJQDuPGcYcAcRa0SuHcgDxZSaHDQDA/TAGowBMF0zbzUXuKbp6/T9Hs0Mr2uIIvf1evU27HjVhGqxzIOLpsnvdf2QQXWnmzdZfHt3tWwzTiSH3vEUd6k19g7UB0olpntNd1j0cr+hUdQb7gDG/d0OPEgDN4Aa5AgD7jZ6kVz2IRHG+Tn4G9Ti+0VyqwYceoUasHWsZVWJboRhlv2FtV4mV/JzUQpSH8riedDt6IesCB45M+vfP7186CwC/2DD8Wr/yQsGVIj1uyZI8aRq0rQK7vCX6s83xz0uHVjk9C58REaVqEJ6RnZeFAPAZSY60H0B6Pfx4+LW2SnhKGamRZY947dY8a6/yFG4CgMbv1zrFTfGQZAgTPs32tAR4yWW6LZBHLB4RGfusWXR55SGbgy2TXg3A897m93Fm29hNW5mthlltjB2bJD9QH9e8Jg5TV4UjN7rm5wbZB+z4MdfhQ0hQ6C1purg2oF2RbJonLHMQiH79VxkZpRgIVNd9I7ox1DGwj9lonsHM4OoOR9ZWmYZs7zefKmz5dMgc2u2qU1s20Uu2RdtV8Kfzn/Ul/S2fzJpMB/gvTGJ+Ljto3eoAAABZelRYdFNvZnR3YXJlAAB42vPMTUxP9U1Mz0zOVjDTM9KzUDAw1Tcw1zc0Ugg0NFNIy8xJtdIvLS7SL85ILErV90Qo1zXTM9Kz0E/JT9bPzEtJrdDLKMnNAQCtThisdBUuawAAACF6VFh0VGh1bWI6OkRvY3VtZW50OjpQYWdlcwAAeNozBAAAMgAyDBLihAAAACF6VFh0VGh1bWI6OkltYWdlOjpoZWlnaHQAAHjaMzQ3BQABOQCe2kFN5gAAACB6VFh0VGh1bWI6OkltYWdlOjpXaWR0aAAAeNozNDECAAEwAJjOM9CLAAAAInpUWHRUaHVtYjo6TWltZXR5cGUAAHjay8xNTE/VL8hLBwARewN4XzlH4gAAACB6VFh0VGh1bWI6Ok1UaW1lAAB42jM0trQ0MTW1sDADAAt5AhucJezWAAAAGXpUWHRUaHVtYjo6U2l6ZQAAeNoztMhOAgACqAE33ps9oAAAABx6VFh0VGh1bWI6OlVSSQAAeNpLy8xJtdLX1wcADJoCaJRAUaoAAAAASUVORK5CYII="
+        rel="shortcut icon" type="image/vnd.microsoft.icon" />
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/theme/beige.css">
+
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
+
+    <style>
+        .joomla_folder small {
+            display: inline;
+            text-align: left;
+        }
+
+        .img_joomla {
+            float: right;
+            max-height: 350px;
+            margin-left: 20px !important;
+        }
+
+        .img_left {
+            float: left;
+            max-height: 350px;
+            margin-right: 20px !important;
+        }
+
+        .red {
+            background-color: red;
+            color: white;
+        }
+
+        .green {
+            background-color: green;
+            color: white;
+        }
+
+        .yellow {
+            background-color: yellow;
+            color: orange;
+        }
+
+        .danger {
+            font-weight: bold;
+            color: red;
+        }
+
+        .warning {
+            font-weight: bold;
+            background-color: orange;
+            color: white;
+        }
+
+        #logo {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            display: none;
+        }
+
+        /* Nono's color */
+
+        .reveal .controls .navigate-left,
+        .reveal .controls .navigate-left.enabled {
+            border-right-color: #B9312C;
+        }
+
+        .reveal .controls .navigate-right,
+        .reveal .controls .navigate-right.enabled {
+            border-left-color: #B9312C;
+        }
+
+        .reveal .controls .navigate-up,
+        .reveal .controls .navigate-up.enabled {
+            border-bottom-color: #B9312C;
+        }
+
+        .reveal .controls .navigate-down,
+        .reveal .controls .navigate-down.enabled {
+            border-top-color: #B9312C;
+        }
+
+        /* Horizontal menu */
+
+        #menu {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            z-index: 9;
+            display: none;
+            font-size: 1.4em;
+        }
+
+        #menu nav,
+        header#menu nav ul,
+        header#menu nav ul li,
+        header#menu nav ul li a {
+            height: 30px;
+        }
+
+        #menu nav ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        #menu nav ul li {
+            display: block;
+            float: left;
+        }
+    </style>
+
+    <!-- Printing and PDF exports -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match('/print-pdf/gi') ? 'css/print/pdf.css' : 'css/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+
+    </script>
+
+</head>
+
+<body>
+
+    <header id="menu">
+        <nav>
+            <ul class="curly-link">
+                <li><a href="#/intro" title="Accueil">Accueil</a>&nbsp;-&nbsp;</li>
+                <li><a href="#/objectifs" title="Objectifs de cette présentation">Objectifs</a>&nbsp;-&nbsp;</li>
+                <li><a href="#/video" title="Vidéo en ligne">Vidéo</a>&nbsp;-&nbsp;</li>
+                <li><a href="#/identifiez" title="Identifiez la menace">Menace</a>&nbsp;-&nbsp;</li>
+                <li><a href="#/joomla" title="Joomla!®, quels sont les fichiers natifs et à quoi faut-il faire attention">Joomla!®</a>&nbsp;-&nbsp;</li>
+                <li><a href="#/surveillez" title="Certains fichiers sont plus fréquement vérolés que d'autres...">Surveillez</a>&nbsp;-&nbsp;</li>
+                <li><a href="#/keep-safe" title="Quelques exemples de hack (virus) que vous pourriez trouver">Hack</a>&nbsp;-&nbsp;</li>
+                <li><a href="#/aesecure-quickscan-intro" title="Quelques outils pour vous aider à détecter les virus sur votre site">Outils</a>&nbsp;-&nbsp;</li>
+                <li><a href="#/nettoyer" title="Supprimer la menace">Nettoyer</a>&nbsp;-&nbsp;</li>
+                <li><a href="#/contact" title="Contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="reveal">
+
+        <div class="slides">
+
+            <section id="intro" data-transition="zoom">
+                <!-- Est-ce que mon site a été hacké? v1 -->
+                <h1>Est-ce que mon site a &eacute;t&eacute; hack&eacute; ? Est-il propre ? Comment m&rsquo;en assurer ?</h1>
+                <small>v1 30/04/2016</small>
+                <p>
+                    <small><a href="https://www.aesecure.com" target="_blank" rel="noopener noreferrer">Christophe
+                            Avonture</a> / <a href="https://www.facebook.com/aesecure" target="_blank" rel="nofollow noopener noreferrer">fanpage</a>
+                        / <a href="http://twitter.com/aesecure" target="_blank" rel="nofollow noopener noreferrer">@aesecure</a></small>
+                </p>
+            </section>
+            <!-- Est-ce que mon site a été hacké? v1 -->
+
+            <section id="raccourcis">
+                <!-- Raccourcis clavier -->
+                <h2>Raccourcis clavier</h2>
+                <table>
+                    <tr>
+                        <td><b>Prochain slide</b></td>
+                        <td>Touche d'espacement</td>
+                    </tr>
+                    <tr>
+                        <td><b>Se déplacer</b></td>
+                        <td><span class="key">←</span>, <span class="key">→</span>, <span class="key">↓</span> et <span
+                                class="key">↑</span></td>
+                    </tr>
+                    <tr>
+                        <td><b>Plein écran</b></td>
+                        <td>F</td>
+                    </tr>
+                    <tr>
+                        <td><b>Commentaires</b></td>
+                        <td>S</td>
+                    </tr>
+                    <tr>
+                        <td><b>Voir les vignettes</b></td>
+                        <td>Esc</td>
+                    </tr>
+                </table>
+                <hr />
+                <p>Vous pouvez aussi utiliser la roulette de votre souris pour afficher le prochain slide.</p>
+                <aside class="notes">
+                    <p>Bravo, vous venez d'afficher les commentaires.</p>
+                </aside>
+            </section>
+            <!-- Raccourcis clavier -->
+
+            <section id="qui-suis-je">
+                <!-- Qui suis-je ?-->
+                <h2>Qui suis-je ?</h2>
+                <img src="img/blank.png" width="200" height="189" alt="Christophe Avonture - Qui suis-je ?" data-src="img/christophe-avonture.jpg" />
+                <ul>
+                    <li>Développeur d’<a href="https://www.aesecure.com/" target="_blank" rel="noopener noreferrer">aeSecure</a>,
+                        solution de <strong>sécurisation</strong>, d’<strong>optimisation</strong> et de <strong>nettoyage
+                            de sites</strong> web
+                        Apache
+                    </li>
+                    <li>Administrateur <a href="https://forum.joomla.fr/" target="_blank" rel="nofollow noopener noreferrer">Joomla!
+                            France</a> (<a href="https://forum.joomla.fr/member.php?38299-cavo789&amp;tab=aboutme"
+                            target="_blank" rel="noopener noreferrer">cavo789</a>)</li>
+                    <li>Membre fondateur de la <a href="https://www.jugwallonie.be/" target="_blank" rel="nofollow noopener noreferrer">JUG!
+                            Wallonie</a></li>
+                </ul>
+            </section>
+            <!-- Qui suis-je ?-->
+
+            <section>
+                <!-- Objectifs de cette présentation + Aller plus loin + Remarques -->
+                <section id="objectifs">
+                    <!-- Objectifs de cette présentation -->
+                    <h2>Objectifs de cette présentation</h2>
+                    <ul>
+                        <li>Apprendre à identifier rapidement quelques signaux qui vont trahir la présence de virus /
+                            hack sur son site Joomla!®</li>
+                        <li>Utilisation d’outils gratuits comme <a href="https://www.aesecure.com/fr/blog/aesecure-quickscan.html"
+                                target="_blank" rel="noopener noreferrer" title="aeSecure QuickScan, scanner votre site web à la recherche de virus">aeSecure
+                                QuickScan</a>,
+                            <a href="https://sitecheck.sucuri.net//" target="_blank" rel="nofollow noopener noreferrer"
+                                title="Free Website Malware and Security Scanner">Sucuri Sitecheck</a>, <a href="http://winmerge.org/?lang=fr"
+                                target="_blank" rel="nofollow noopener noreferrer">WinMerge</a>/<a href="http://meldmerge.org/"
+                                target="_blank" rel="nofollow noopener noreferrer">Meld</a> et bien sûr … Google pour
+                            la partie détection.</li>
+                    </ul>
+                </section>
+                <section id="plus-loin">
+                    <!-- Aller plus loin... -->
+                    <h2>Aller plus loin...</h2>
+                    <ul>
+                        <li>“La sécurité et Joomla!®” pour apprendre à sécuriser votre site web&nbsp;: <a href="https://www.aesecure.com/fr/blog/joomla-securite.html"
+                                target="_blank" rel="noopener noreferrer">https://www.aesecure.com/fr/blog/joomla-securite.html</a></li>
+                        <li>“Votre site a été hacké, que faire ?” pour apprendre à le nettoyer par vous-même&nbsp;: <a
+                                href="https://www.aesecure.com/fr/blog/site-hacke.html" target="_blank" rel="noopener noreferrer">https://www.aesecure.com/fr/blog/site-hacke.html</a></li>
+                    </ul>
+                </section>
+                <section>
+                    <!-- Remarques -->
+                    <h2 id="remarques">Remarques</h2>
+                    <p>Les trucs et astuces mentionnés dans cette présentation n’ont <strong>pas</strong> pour vocation
+                        d’être <strong>exhaustifs</strong> mais bien d’aider à répondre à la question&nbsp;: y a-t-il
+                        des virus sur mon site ?</p>
+                </section>
+                <section id="download">
+                    <!-- Download -->
+                    <h2>Télécharger cette présentation</h2>
+                    <p>Cette présentation est téléchargeable pour lecture en mode offline et/ou afin d'en simplifier
+                        son impression&nbsp;: <a href="aesecure_is_your_website_is_hacked.pdf">format pdf</a></p>
+                </section>
+            </section>
+            <!-- Objectifs de cette présentation + Aller plus loin + Remarques -->
+
+            <section id="video" data-background-video="https://vimeo.com/164907381?api=1" data-background-color="#f1f1f1">
+                <!-- Video -->
+                <h2>Vidéo en ligne</h2>
+                <a href="https://vimeo.com/164907381/" target="_blank" rel="nofollow noopener noreferrer"><img src="img/blank.png"
+                        alt="video" data-src="img/vimeo.png" height="300" /></a>
+                <a href="https://vimeo.com/164907381/" target="_blank" rel="nofollow noopener noreferrer">https://vimeo.com/164907381</a>
+            </section>
+            <!-- Video -->
+
+            <section data-transition="slide" data-background="#4d7e65" data-background-transition="zoom">
+                <!-- Identifiez la menace -->
+                <section id="identifiez" data-transition="slide" data-background="#b5533c" data-background-transition="zoom">
+                    <!-- Identifiez la menace -->
+                    <h2>Identifiez la menace</h2>
+                    <img src="img/blank.png" class="roll-in" data-src="img/identify_threat.png" width="495" height="252"
+                        alt="Identifiez la menace" />
+                </section>
+                <section id="defacement" data-transition="slide" data-background="#b5533c" data-background-transition="zoom">
+                    <!-- Defacement -->
+                    <h2>Defacement</h2>
+                    <img src="img/blank.png" data-src="img/defacement.png" alt="Defacement" />
+                </section>
+                <section id="ransomware" data-transition="slide" data-background="#b5533c" data-background-transition="zoom">
+                    <!-- Ransomware -->
+                    <h2>Ransomware</h2>
+                    <img src="img/blank.png" data-src="img/ransomware.png" alt="Ransomware" />
+                </section>
+                <section id="pharmahack" data-transition="slide" data-background="#b5533c" data-background-transition="zoom">
+                    <!-- Pharma-hack -->
+                    <h2>Pharma-hack</h2>
+                    <img src="img/blank.png" data-src="img/pharmahack.png" alt="Pharma-hack" />
+                </section>
+            </section>
+            <!-- Identifiez la menace -->
+
+            <section id="alerte-par">
+                <!-- Vous avez été averti par / Vous avez constaté … -->
+                <h2>Vous avez été averti par / Vous avez constaté …</h2>
+                <ul style="font-size:0.6em;">
+                    <li class="fragment fade-up">Vous avez reçu un email de votre hébergeur, d’un autre hébergeur qui
+                        détecte du spam envoyé depuis votre site, de Google,</li>
+                    <li class="fragment fade-up">Les statistiques Google montrent des résultats surprenant comme des
+                        pics d’activités ou des URLs qui en principe n’existent pas (avec des pages en Chinois p.ex.),
+                        ou encore des pertes de trafic importante et à priori inexplicables,</li>
+                    <li class="fragment fade-up">Votre site est redirigé vers un autre site quand vous vous y connectez
+                        depuis un smartphone, …</li>
+                    <li class="fragment fade-up">L’onglet réseau de votre navigateur montre des connections vers des
+                        sites tiers que vous ne connaissez pas,</li>
+                    <li class="fragment fade-up">Votre navigateur demande à autoriser le téléchargement d’un fichier
+                        qui vous est inconnu,</li>
+                    <li class="fragment fade-up">En surfant sur votre site, vous constatez l’affichage d’informations
+                        qui ne devraient pas s’y trouver (messages d’erreur, portion de texte dont vous n’êtes pas
+                        l’auteur, liens vers des sites tiers, …),</li>
+                    <li class="fragment fade-up">...</li>
+                </ul>
+            </section>
+            <!-- Vous avez été averti par / Vous avez constaté … -->
+
+            <section id="joomla">
+                <!-- Joomla!® -->
+                <section id="joomla_native">
+                    <!-- Joomla!®, installation native -->
+                    <h2>Joomla!®, installation native</h2>
+                    <p>Les prochains slides se basent sur une installation native de Joomla!®.</p>
+                    <p>Les fichiers marqués sur fond&nbsp;:</p>
+                    <ul>
+                        <li><span class="green">vert</span> sont les fichiers à priori légitimes,</li>
+                        <li><span class="yellow">jaune</span> ceux qui nécessitent un traitement particulier et </li>
+                        <li><span class="red">rouge</span> ceux qui peuvent être supprimés.</li>
+                    </ul>
+                </section>
+                <section id="joomla_root" class="joomla_folder">
+                    <!-- Dossier racine de Joomla!® -->
+                    <h2>Dossier racine de Joomla!®</h2>
+                    <img src="img/blank.png" alt="Joomla root" data-src="img/joomla_root.png" class="img_joomla" />
+                    <div style="font-size:0.6em;">
+                        <p><span class="green">Légitime</span>&nbsp;: configuration.php, index.php et robots.txt <br /><small>(sous
+                                Joomla 1.5, vous aviez aussi index2.php et index3.php)</small></p>
+                        <p><span class="yellow">Particulier</span>&nbsp;: htaccess.txt que vous pouvez renommer en
+                            .htaccess si vous activez la réécriture des URLs.</p>
+                        <p><span class="red">Peuvent être supprimé</span> car inutiles&nbsp;: CONTRIBUTING.md,
+                            htaccess.txt, LICENSE.txt, joomla.xml, README.txt, robots.txt.dist, web.config.txt peuvent
+                            être supprimés sans problème.</p>
+                        <p class="danger"><strong>Danger - Fichiers php<br />Si vous avez d’autres fichiers php,
+                                éditez-les et regardez leur contenu. A priori, ces fichiers ne devraient pas se trouver
+                                là. Ils sont donc suspects =&gt; à éditer afin d’en évaluer le caractère dangereux.</strong></p>
+                        <p>À analyser<br />Si vous avez un fichier .htaccess ou php.ini, jetez-y un coup d’oeil.</p>
+                        <p>Vous pourriez avoir quantité d’autres fichiers comme les fichiers de propriétés Google,
+                            Bing, ..., à analyser au cas par cas.</p>
+                    </div>
+                </section>
+                <section id="joomla_administrator" class="joomla_folder">
+                    <!-- Dossier administrator de Joomla!® -->
+                    <h2>Dossier administrator de Joomla!®</h2>
+                    <img src="img/blank.png" alt="Joomla admin" data-src="img/joomla_administrator.png" class="img_joomla" />
+                    <div style="font-size:0.6em;">
+                        <p><span class="green">Légitime</span>&nbsp;: uniquement index.php et seulement ce fichier.</p>
+                        <p><span class="yellow">Particulier</span>&nbsp;: .htaccess et .htpasswd pourraient être
+                            présent si vous avez protégé votre administration (à éditer pour analyse).</p>
+                        <p class="danger"><strong>Danger - Fichiers php<br />Si vous avez d’autres fichiers php,
+                                éditez-les et regardez leur contenu. À priori, ces fichiers ne devraient pas se trouver
+                                là. Ils sont donc très fortement suspects.</strong></p>
+                    </div>
+                </section>
+                <section id="joomla_cache" class="joomla_folder">
+                    <!-- Dossier cache de Joomla!® -->
+                    <h2>Dossier cache de Joomla!®</h2>
+                    <img src="img/blank.png" alt="Joomla cache" data-src="img/joomla_cache.png" class="img_joomla" />
+                    <div style="font-size:0.8em;">
+                        <p><span class="green">Légitime</span>&nbsp;: uniquement index.html.</p>
+                        <p><span class="yellow">Particulier</span>&nbsp;: .htaccess pourrait être présent si vous avez
+                            protégé ce dossier (à éditer toutefois pour analyse).</p>
+                        <p>Les autres fichiers, tous les autres fichiers, peuvent être supprimés sans autre forme de
+                            procès.</p>
+                        <p><span class="warning">À priori aucun fichier php ne devrait s’y trouver. Si c’est le cas,
+                                probabilité d’un virus.</span></p>
+                    </div>
+                </section>
+                <section id="joomla_components" class="joomla_folder">
+                    <!-- Dossier components de Joomla!® -->
+                    <h2>Dossier components de Joomla!®</h2>
+                    <img src="img/blank.png" alt="Joomla components" data-src="img/joomla_components.png" class="img_joomla" />
+                    <div style="font-size:0.8em;">
+                        <p><span class="green">Légitime</span>&nbsp;: uniquement index.html.</p>
+                        <p><span class="yellow">Particulier</span>&nbsp;: .htaccess pourrait être présent si vous avez
+                            protégé ce dossier (à éditer toutefois pour analyse).</p>
+                        <p class="danger"><strong>Danger – Fichiers php<br />Aucun autre fichier n’est attendu dans ce
+                                dossier et certainement pas des scripts .php</strong></p>
+                    </div>
+                </section>
+                <section id="joomla_images" class="joomla_folder">
+                    <!-- Dossier images de Joomla!® -->
+                    <h2>Dossier images de Joomla!®</h2>
+                    <img src="img/blank.png" alt="Joomla images" data-src="img/joomla_images.png" class="img_joomla" />
+                    <div style="font-size:0.8em;">
+                        <p><span class="green">Légitime</span>&nbsp;: uniquement index.html.</p>
+                        <p><span class="yellow">Particulier</span>&nbsp;: .htaccess pourrait être présent si vous avez
+                            protégé ce dossier (à éditer toutefois pour analyse).</p>
+                        <p><span class="red">À priori, peuvent être supprimés</span> car inutiles&nbsp;: les dossiers
+                            banners, headers et sampledata et les images joomla_black.png et powered_by.png.</p>
+                        <p class="danger"><strong>Danger – Fichiers php<br />Aucun fichier .php n’est attendu dans le
+                                dossier /images et sous-dossiers. La probabilité de trouver des virus dans /images (et
+                                sous-dossiers) est très forte si le site a été hacké.</strong></p>
+                    </div>
+                </section>
+                <section id="joomla_language" class="joomla_folder">
+                    <!-- Dossier language de Joomla!® -->
+                    <h2>Dossier language de Joomla!®</h2>
+                    <img src="img/blank.png" alt="Joomla languages" data-src="img/joomla_language.png" class="img_joomla" />
+                    <div style="font-size:0.8em;">
+                        <p><span class="green">Légitime</span>&nbsp;: uniquement index.html.</p>
+                        <p><span class="yellow">Particulier</span>&nbsp;: .htaccess pourrait être présent si vous avez
+                            protégé ce dossier (à éditer toutefois pour analyse).</p>
+                        <p>Remarque&nbsp;: il y a un fichier .php dans chaque dossier langue. Le script se nomme
+                            fr-FR.localise.php (où fr-FR est le code ISO de la langue).</p>
+                        <p class="danger"><strong>Danger – Fichiers php<br />Si vous trouvez d’autres fichiers .php,
+                                ils sont suspects.</strong></p>
+                    </div>
+                </section>
+                <section id="joomla_logs" class="joomla_folder">
+                    <!-- Dossier logs de Joomla!® -->
+                    <h2>Dossier logs de Joomla!®</h2>
+                    <img src="img/blank.png" alt="Joomla logs" data-src="img/joomla_logs.png" class="img_joomla" />
+                    <div style="font-size:0.8em;">
+                        <p><span class="green">Légitime</span>&nbsp;: uniquement index.html.</p>
+                        <p><span class="yellow">Particulier</span>&nbsp;: .htaccess pourrait être présent si vous avez
+                            protégé ce dossier (à éditer toutefois pour analyse).</p>
+                        <p>Les autres fichiers, tous les autres fichiers, peuvent être supprimés sans autre forme de
+                            procès.</p>
+                    </div>
+                </section>
+                <section id="joomla_media" class="joomla_folder">
+                    <!-- Dossier media de Joomla!® -->
+                    <h2>Dossier media de Joomla!®</h2>
+                    <img src="img/blank.png" alt="Joomla media" data-src="img/joomla_media.png" class="img_joomla" />
+                    <div style="font-size:0.8em;">
+                        <p><span class="green">Légitime</span>&nbsp;: uniquement index.html.</p>
+                        <p><span class="yellow">Particulier</span>&nbsp;: .htaccess pourrait être présent si vous avez
+                            protégé ce dossier (à éditer toutefois pour analyse).</p>
+                        <p>Remarque&nbsp;: les medias devraient en principe être utilisés pour y stocker des images,
+                            des fichiers css/less, des scripts js mais logiquement aucun scripts .php. Les scripts .php
+                            dans media sont toutefois possible et quelques
+                            extensions en utilisent. Il faut donc être vigilant lors d’une operation de nettoyage.</p>
+                        <p><span class="warning">Note&nbsp;: si vous trouvez des fichiers .php à la racine du dossier
+                                media, ces fichiers sont donc suspect.</span></p>
+                    </div>
+                </section>
+                <section id="joomla_modules" class="joomla_folder">
+                    <!-- Dossier modules de Joomla!® -->
+                    <h2>Dossier modules de Joomla!®</h2>
+                    <img src="img/blank.png" alt="Joomla modules" data-src="img/joomla_modules.png" class="img_joomla" />
+                    <div style="font-size:0.8em;">
+                        <p><span class="green">Légitime</span>&nbsp;: uniquement index.html.</p>
+                        <p><span class="yellow">Particulier</span>&nbsp;: .htaccess pourrait être présent si vous avez
+                            protégé ce dossier (à éditer toutefois pour analyse).</p>
+                        <p class="danger"><strong>Danger – Fichiers php<br />Aucun autre fichier n’est attendu dans ce
+                                dossier. Si vous avez un fichier .php à la racine du dossier modules, ce script-là est
+                                fortement suspect.</strong></p>
+                    </div>
+                </section>
+                <section id="joomla_plugins" class="joomla_folder">
+                    <!-- Dossier plugins de Joomla!® -->
+                    <h2>Dossier plugins de Joomla!®</h2>
+                    <img src="img/blank.png" alt="Joomla plugins" data-src="img/joomla_plugins.png" class="img_joomla" />
+                    <div style="font-size:0.8em;">
+                        <p><span class="green">Légitime</span>&nbsp;: uniquement index.html.</p>
+                        <p><span class="yellow">Particulier</span>&nbsp;: .htaccess pourrait être présent si vous avez
+                            protégé ce dossier (à éditer toutefois pour analyse).</p>
+                        <p class="danger"><strong>Danger – Fichiers php<br />Aucun autre fichier n’est attendu dans ce
+                                dossier. Si vous avez un fichier .php à la racine du dossier plugins, ce script-là est
+                                fortement suspect.</strong></p>
+                    </div>
+                </section>
+                <section id="joomla_templates" class="joomla_folder">
+                    <!-- Dossier templates de Joomla!® -->
+                    <h2>Dossier templates de Joomla!®</h2>
+                    <img src="img/blank.png" alt="Joomla templates" data-src="img/joomla_templates.png" class="img_joomla" />
+                    <div style="font-size:0.8em;">
+                        <p><span class="green">Légitime</span>&nbsp;: uniquement index.html.</p>
+                        <p><span class="yellow">Particulier</span>&nbsp;: .htaccess pourrait être présent si vous avez
+                            protégé ce dossier (à éditer toutefois pour analyse).</p>
+                        <p class="danger"><strong>Danger – Fichiers php<br />Aucun autre fichier n’est attendu dans ce
+                                dossier. Si vous avez un fichier .php à la racine du dossier templates, ce script-là
+                                est fortement suspect.</strong></p>
+                        <p class="warning"><strong>Le hack des fichiers index.php se trouvant dans les dossiers
+                                templates est un classique du genre. Ces fichiers sont à surveiller de très près.</strong></p>
+                    </div>
+                </section>
+                <section id="joomla_tmp" class="joomla_folder">
+                    <!-- Dossier tmp de Joomla!® -->
+                    <h2>Dossier tmp de Joomla!®</h2>
+                    <img src="img/blank.png" alt="Joomla tmp" data-src="img/joomla_tmp.png" class="img_joomla" />
+                    <div style="font-size:0.8em;">
+                        <p><span class="green">Légitime</span>&nbsp;: uniquement index.html.</p>
+                        <p><span class="yellow">Particulier</span>&nbsp;: .htaccess pourrait être présent si vous avez
+                            protégé ce dossier (à éditer toutefois pour analyse).</p>
+                        <p>Les autres fichiers, tous les autres fichiers, peuvent être supprimés sans autre forme de
+                            procès.</p>
+                    </div>
+                </section>
+            </section>
+            <!-- Joomla!® -->
+
+            <section data-transition="slide" data-background="#4d7e65" data-background-transition="zoom">
+                <!-- Surveillez -->
+                <section id="surveillez" data-transition="slide" data-background="#b5533c" data-background-transition="zoom">
+                    <!-- Surveillez -->
+                    <h2>Surveillez</h2>
+                </section>
+                <section id="dates">
+                    <!-- Se fier aux dates ? -->
+                    <h2>Se fier aux dates ?</h2>
+                    <img src="img/blank.png" alt="Dates" data-class="img_left" data-src="img/dates.png" />
+                    <p><small>En php, l’instruction <span class="red">touch()</span> permet de réinitialiser la date de
+                            dernière modification.<br />Si j’étais un pirate, mon virus détecterait d’abord la date
+                            courante du fichier pour injecter mon virus et rétablir cette date quand l’injection a été
+                            faite.<br />Toutefois, avoir dans un dossier de nombreux fichiers avec une même date et un
+                            intrus, oui, il est utile d’aller voir ce que contient l’intrus. </small></p>
+                </section>
+                <section id="fichiers-joomla">
+                    <!-- Fichiers à surveiller -->
+                    <h2>Fichiers à surveiller</h2>
+                    <p>Les fichiers ci-dessous sont assez régulièrement hackés&nbsp;:</p>
+                    <ul>
+                        <li><code>/administrator/includes/defines.php</code></li>
+                        <li><code>/includes/defines.php</code></li>
+                        <li><code>/templates/…/index.php</code> (ceci pour tous les templates)</li>
+                    </ul>
+                </section>
+            </section>
+            <!-- Surveillez -->
+
+            <section id="exemples">
+                <!-- Exemples de hack -->
+                <section id="keep-safe">
+                    <!-- keep-safe -->
+                    <h2>Exemples de hack</h2>
+                    <img src="img/blank.png" alt="Keep safe" data-src="img/keep-safe.png" />
+                </section>
+                <section id="x-httpd-php">
+                    <!-- x-httpd-php -->
+                    <h2>SetHandler application/x-httpd-php</h2>
+                    <div style="font-size:0.8em;">
+                        <p>Lorsque vous avez un fichier .htaccess dans un dossier, quel que soit le dossier, il est
+                            utile de l’éditer pour prendre connaissance de son contenu. Un tel fichier peut p.ex.
+                            rendre exécutable … une image.</p>
+                    </div>
+                    <pre><code data-trim>
+            &lt;FilesMatch "bananas_1.jpg"&gt;
+            SetHandler application/x-httpd-php
+            &lt;/FilesMatch&gt;
+                  </code></pre>
+                    <div style="font-size:0.8em;">
+                        <p>Ces trois lignes vont indiquer à Apache que le fichier bananas_1.jpg, malgré son extension,
+                            doit être considéré comme un script php&nbsp;: le pirate pourra donc accéder à
+                            http://votresite/.../bananas_1.jpg afin de lancer le
+                            script.
+                        </p>
+                        <p class="danger">Un fichier .htaccess où vous trouvez un SetHandler application/x-httpd-php
+                            est donc suspect.</p>
+                    </div>
+                </section>
+                <section id="jpg-x-httpd-php">
+                    <!-- jpg-x-httpd-php -->
+                    <h2>SetHandler application/x-httpd-php</h2>
+                    <img src="img/blank.png" alt="x-httpd" data-src="img/jpg-x-httpd-php.png" />
+                </section>
+                <section id="gif89a">
+                    <!-- gif89a -->
+                    <h2>Un script caché derrière une ... GIF</h2>
+                    <img src="img/blank.png" alt="gif-php" data-src="img/gif-php.png" />
+                </section>
+                <section id="jpg-ssh">
+                    <!-- jpg-ssh -->
+                    <h2>Une image jpg... Ben non</h2>
+                    <img src="img/blank.png" alt="jpg-ssh" data-src="img/jpg-ssh.png" />
+                    <p style="font-style:italic"><small>Si vous êtes attentif, vous verriez un second virus...</small></p>
+                </section>
+                <section id="xyplorer-images">
+                    <!-- xyplorer-images -->
+                    <h2>XYplorer, voir les images</h2>
+                    <img src="img/blank.png" data-src="img/xyplorer-images.png" alt="XYplorer (http://www.xyplorer.com/), un fabuleux gestionnaire de fichiers pour Windows" />
+                    <div style="font-size:0.8em;">
+                        <a href="http://www.xyplorer.com/" target="_blank" rel="nofollow noopener noreferrer">XYplorer,
+                            un fabuleux gestionnaire de fichiers pour Windows permettant d'afficher toutes les images
+                            du site en trois clics seulement</a>
+                    </div>
+                </section>
+                <section id="false_plugin">
+                    <!-- false_plugin -->
+                    <h2>Un faux plugin Joomla!®</h2>
+                    <img src="img/blank.png" alt="false-plugin" data-src="img/false_plugin.png" />
+                    <div style="font-size:0.8em;">Déclaration d’une classe bidon dont le constructeur va récupérer un
+                        cookie initialisé par le pirate.</div>
+                    <aside class="notes">
+                        $jq est très probablement initialisé à base64_decode. $option à preg_replace et $au serait le
+                        code php pour l’attaque. La ligne $option("/438/e… est celle qui lance l’attaque.
+                    </aside>
+                </section>
+                <section id="false_robots_txt">
+                    <!-- false_robots_txt -->
+                    <h2>Faux fichier robots.txt</h2>
+                    <img src="img/blank.png" alt="robots.txt" data-src="img/false_robots_txt.png" />
+                    <div style="font-size:0.6em;">Le fichier robots.txt est présumé se trouver dans le dossier racine.
+                        Si vous le trouvez dans un autre dossier, c’est un bon candidat à "allons voir ce qu’il
+                        contient".</div>
+                    <aside class="notes">Un tel fichier est rendu exécutable grâce à trois lignes de code dans un
+                        fichier .htaccess; pas forcément dans le même dossier.</aside>
+                </section>
+                <section id="false_404">
+                    <!-- false_404 -->
+                    <h2>Une fausse page 404</h2>
+                    <img src="img/blank.png" alt="404" data-src="img/false_404.png" />
+                    <div>Fichier qui pourrait se nommer <code>404.php</code> à la racine du site ou dans un dossier
+                        /templates dont le but est de vous tromper quant à son contenu.</div>
+                </section>
+                <section id="injection">
+                    <!-- Code inséré dans des fichiers natifs -->
+                    <h2>Code inséré dans des fichiers natifs</h2>
+                    <img src="img/blank.png" alt="php injection" data-src="img/php_injection.png" />
+                    <div>Injection de code dans le fichier <code>\libraries\joomla\application\module\helper.php</code></div>
+                </section>
+                <section id="puzzle">
+                    <!-- puzzle -->
+                    <h2>Code inséré dans des fichiers natifs</h2>
+                    <img src="img/blank.png" alt="puzzle" data-src="img/puzzle.png" />
+                    <div><small>Le code de l’attaque se cache au milieu des commentaires et de code propre mais inutile
+                            dont le seul but est de faire croire à un fichier inoffensif.</small></div>
+                    <aside class="notes">
+                        Si vous faites attention, $a est initialisé à assert() qui est une instruction php autorisant
+                        l’exécution de code. Sans nul doute $sess est initialisé par l’attaquant avec le code
+                        dangereux. $a($sess) va lancer l’attaque.
+                    </aside>
+                </section>
+                <section id="heredoc">
+                    <!-- Attention aux <<< - Syntaxe Heredoc -->
+                    <h2>Attention aux &lt;&lt;&lt; - Syntaxe Heredoc</h2>
+                    <img src="img/blank.png" alt="heredoc" data-src="img/heredoc.png" />
+                    <div>Le pirate a camouflé son code dans du code qui semble être propre</div>
+                </section>
+                <section id="cookie_64">
+                    <!-- $_COOKIE et base64_decode -->
+                    <h2>$_COOKIE et base64_decode</h2>
+                    <img src="img/blank.png" alt="cookie64" data-src="img/cookie_64.png" />
+                    <div>Quelques indicateurs tendant à démontrer que le codeur n’a pas voulu un code explicite pour
+                        masquer ses intentions</div>
+                    <aside class="notes">Suspect parce que&nbsp;: 1. Récupération de cookies au travers de $_COOKIE, 2.
+                        Nom du cookie plutôt exotique, 3. Décodage du cookie et 4. "désérialisation"</aside>
+                </section>
+                <section id="move_uploaded_file">
+                    <!-- move_uploaded_file -->
+                    <h2>move_uploaded_file</h2>
+                    <img src="img/blank.png" alt="uploaded_file" data-src="img/move_uploaded_file.png" />
+                    <div style="font-size:0.6em;">En l’occurrence, un formulaire d’upload planqué dans un dossier "à
+                        priori" sain et avec un nom passe-partout (library.php)</div>
+                    <aside class="notes">Instruction php utilisée pour déplacer un fichier après upload.</aside>
+                </section>
+                <section id="keskildit">
+                    <!-- keskildit -->
+                    <h2>Keskildit ?</h2>
+                    <img src="img/blank.png" alt="keskildit" data-src="img/keskildit.png" />
+                    <div>Là, clairement, à moins de parler le Vénusien méridional, le programmeur a vraiment tenté de
+                        vous cacher ses intentions</div>
+                </section>
+            </section>
+            <!-- Exemples de hack -->
+
+            <section id="outils" data-transition="zoom">
+                <!-- Outils -->
+                <section id="aesecure-quickscan-intro">
+                    <!-- aeSecure QuickScan -->
+                    <h2>aeSecure QuickScan</h2>
+                    <ul>
+                        <li class="fragment">Scanner php universel gratuit qui permet de détecter rapidement des
+                            fichiers suspects sur son site et de vous permettre de les supprimer.</li>
+                        <li class="fragment">Concept de liste blanche et de liste noire pour optimiser le scan.</li>
+                        <li class="fragment">22 CMS supportés nativement.</li>
+                        <li class="fragment"><a href="http://translate.aesecure.com/collaboration/project?id=66085"
+                                target="_blank" rel="nofollow noopener noreferrer">Disponible en Français, Néerlandais
+                                et Anglais.</a></li>
+                    </ul>
+                    <aside class="notes">22 CMS (cake, drupal, joomla, magento, prestashop, wordpress, …)</aside>
+                </section>
+                <section id="aesecure-quickscan">
+                    <!-- aeSecure QuickScan -->
+                    <h2>aeSecure QuickScan</h2>
+                    <img src="img/blank.png" alt="quickscan" data-src="img/quickscan_results.png" />
+                    <a href="https://www.aesecure.com/fr/blog/aesecure-quickscan.html" target="_blank" rel="noopener noreferrer">https://www.aesecure.com/fr/blog/aesecure-quickscan.html</a>
+                </section>
+                <section data-background="img/aesecure_full.png">
+                    <!-- aeSecure QuickScan - Full -->
+                    <p>&nbsp;</p>
+                </section>
+                <section id="sucuri-sitecheck">
+                    <!-- Sucuri Sitecheck -->
+                    <h2>Sucuri Sitecheck</h2>
+                    <img src="img/blank.png" alt="sitecheck" data-src="img/sucuri-sitecheck.png" />
+                    <a href="https://sitecheck.sucuri.net/" target="_blank" rel="nofollow noopener noreferrer">https://sitecheck.sucuri.net/</a>
+                    <div><small>Scanne l’URL soumise et quelques fichiers prédéfinis comme p.ex. le script de jQuery.</small></div>
+                    <aside class="notes">Remarques&nbsp;: 1. Le scanner n’analyse que le code html de la page tel que
+                        retourné par votre serveur web et n’est pas capable de vérifier l’intégralité du site et donc
+                        ne trouvera pas, p.ex., http://votresite/virus.php 2. Parfois
+                        un peu trop commercial en présumant qu’il y a des virus alors que c’est faux (ex. lorsque le
+                        site est en erreur 500, Sucuri détecte un virus)
+                    </aside>
+                </section>
+                <section id="google-serp">
+                    <!-- Google SERP -->
+                    <h2>Google SERP</h2>
+                    <img src="img/blank.png" alt="serp" data-src="img/google-serp.png" />
+                    <a href="http://www.google.fr" target="_blank" rel="nofollow noopener noreferrer">http://www.google.fr</a>
+                    <div style="font-size:0.6em;">De temps à autre, lancer une recherche Google sur votre propre site
+                        et vérifiez l’absence des notifications ci-dessus. Pour cela, faites une recherche `*
+                        site:votre-site.fr` </div>
+                </section>
+                <section id="google-see-like">
+                    <!-- Google SERP -->
+                    <h2>Google - Voir ce que vois Google</h2>
+                    <div style="font-size:0.6em;">Pour voir votre site comme Google et donc déceler d'éventuels ajouts
+                        fait par un pirate (comme du Black Hat SEO), utilisez le lien suivant : <a href="https://www.google.com/webmasters/tools/googlebot-fetch"
+                            target="_blank" rel="noopener noreferrer">https://www.google.com/webmasters/tools/googlebot-fetch</a>
+                        (remarque : il faut avoir un compte Google Search Console)</div>
+                </section>
+                <section id="google-safebrowsing">
+                    <!-- Google Safebrowsing -->
+                    <h2>Google Safebrowsing</h2>
+                    <small><a href="https://www.google.com/transparencyreport/safebrowsing/diagnostic/?hl=fr" target="_blank"
+                            rel="nofollow noopener noreferrer">https://www.google.com/transparencyreport/safebrowsing/diagnostic/?hl=fr</a></small>
+                    <div>Safe Browsing est une base de données de Google permettant de vérifier s'il pense que votre
+                        site est suspect.</div>
+                </section>
+                <section id="google-seo">
+                    <!-- Google Black Hat SEO -->
+                    <h2>Google Black Hat SEO</h2>
+                    <img src="img/blank.png" alt="seo" data-src="img/google-seo.png" />
+                    <div>Vérifiez régulièrement les URLs référencées par Google afin de détecter les liens vers du
+                        contenu n’étant pas le vôtre.</div>
+                </section>
+                <section id="google-phishing">
+                    <h2>Google - Hameçonnage</h2>
+                    <div>Si votre site était marqué par Google comme faisant du phising (hameçonnage), une fois nettoyé
+                        vous pourrez demander une demande de réexamen sur
+                        <a href="https://safebrowsing.google.com/safebrowsing/report_error/?hl=fr" target="_blank" rel="nofollow noopener noreferrer">https://safebrowsing.google.com/safebrowsing/report_error/?hl=fr</a>.</div>
+                </section>
+                <section id="google-security-issues">
+                    <h2>Google - Contrôle d'un de ses sites</h2>
+                    <div>Si vous avez un compte Google Search Console (anciennement Webmaster Tools), vous pouvez
+                        obtenir les éventuels avertisssements de sécurité émis par Google. Plus d'info : <a href="https://www.google.com/webmasters/tools/security-issues"
+                            target="_blank" rel="nofollow noopener noreferrer">https://www.google.com/webmasters/tools/security-issues</a>.</div>
+                </section>
+
+                <section id="chrome">
+                    <!-- Chrome -->
+                    <h2>Chrome</h2>
+                    <img src="img/blank.png" alt="chrome" data-src="img/chrome.png" />
+                    <div style="font-size:0.6em;">
+                        <a href="https://www.google.com/transparencyreport/safebrowsing/?hl=fr" target="_blank" rel="nofollow noopener noreferrer">https://www.google.com/transparencyreport/safebrowsing/?hl=fr</a><br />
+                        Chrome utilise l’API de Google
+                        Safe Browsing pour détecter la réputation du site&nbsp;: sain ou pas. Dans le cas contraire,
+                        c’est le RSOD (Red Screen Of Death).
+                    </div>
+                </section>
+                <section id="chrome-download">
+                    <!-- Chrome Download -->
+                    <h2>Chrome Download </h2>
+                    <img src="img/blank.png" alt="download" data-src="img/chrome_download.png" />
+                    <a href="https://www.google.fr/chrome/browser/privacy/whitepaper.html" target="_blank" rel="nofollow noopener noreferrer">https://www.google.fr/chrome/browser/privacy/whitepaper.html</a>
+                    <div>Chrome averti également de manière explicite si un logiciel en cours de téléchargement est
+                        réputé dangereux.</div>
+                </section>
+                <section id="winmerge-meldmerge">
+                    <!-- WinMerge - MeldMerge -->
+                    <h2>WinMerge - MeldMerge</h2>
+                    <ul>
+                        <li>Ces outils permettent de comparer des fichiers et/ou des dossiers&nbsp;: à gauche une
+                            installation saine de Joomla!® et à droite votre site web.</li>
+                        <li>La comparaison permettra de mettre en évidence les fichiers ayant été ajoutés, supprimés ou
+                            altérés.</li>
+                    </ul>
+                    <hr />
+                    <a href="http://winmerge.org" target="_blank" rel="nofollow noopener noreferrer">http://winmerge.org</a>&nbsp;-&nbsp;<a
+                        href="http://meldmerge.org/" target="_blank" rel="nofollow noopener noreferrer">http://meldmerge.org/</a>
+                </section>
+                <section id="meldmerge">
+                    <!-- MeldMerge -->
+                    <h2>WinMerge - MeldMerge</h2>
+                    <img src="img/blank.png" alt="meldmerge" data-src="img/meldmerge.png" />
+                    <ol>
+                        <li>il s’agit d’un fichier ayant été ajouté, ne se trouvant pas dans la distribution de
+                            Joomla!®</li>
+                        <li>ce fichier a été altéré, il ne correspond pas à celui, natif, de Joomla.</li>
+                    </ol>
+                </section>
+                <section id="xyplorer">
+                    <!-- XYplorer -->
+                    <h2>XYplorer</h2>
+                    <p>Gestionnaire de fichiers pour Windows apportant quantité d’améliorations comme p.ex. une vue à
+                        plat, une seconde fenêtre de visualisation des fichiers (contenu ou rendu), de puissants
+                        filtres, critères de sélection, une coloration
+                        des fichiers, une recherche, … </p>
+                    <p>Un Must have !</p>
+                </section>
+                <section>
+                    <!-- XYplorer -->
+                    <h2>XYplorer</h2>
+                    <img src="img/blank.png" data-src="img/xyplorer.png" alt="XYplorer" />
+                    <div><a href="http://www.xyplorer.com/" target="_blank" rel="nofollow noopener noreferrer">http://www.xyplorer.com/</a></div>
+                </section>
+            </section>
+            <!-- Outils -->
+
+            <section id="nettoyer" data-transition="zoom">
+                <!-- Supprimer la menace -->
+                <section id="nettoyer-intro">
+                    <!-- Nettoyer -->
+                    <h2>Supprimer la menace</h2>
+                    <img src="img/blank.png" alt="clean" width="694" height="364" data-src="img/clean.png" />
+                </section>
+                <section id="backups">
+                    <!-- Backups ! -->
+                    <div style="float:left;"><img src="img/blank.png" data-src="img/coyote.png" width="295" height="412"
+                            alt="coyote" /></div>
+                    <h2>Backups</h2>
+                    <p>Avant toute action de votre part; prenez une sauvegarde de votre site en l’état, même s’il est
+                        hacké.</p>
+                    <p>Si, par inadvertence, vous supprimez un fichier nécessaire au fonctionnement du site, si vous
+                        n’avez pas une sauvegarde, vous serez comme coyote… oups!.</p>
+                </section>
+                <section id="reinstall-core" data-transition="slide">
+                    <!-- Joomla!® 3.6.2 -->
+                    <h2>Joomla!® 3.6</h2>
+                    <p>Depuis sa version 3.6, Joomla!® propose maintenant de réinstaller les fichiers du core, si vous
+                        n'avez pas apporté de modifications dans les fichiers natifs, vous supprimerez déjà quantité de
+                        virus en réinstallant les fichiers
+                        du CMS.</p>
+                    <p>Cette option est proposée dans l'écran Composants - Mise à jour de Joomla!</p>
+                </section>
+                <section id="reinstall-from-backup" data-transition="slide">
+                    <!-- Joomla!® 3.6.2 -->
+                    <h2>Restaurer une archive saine</h2>
+                    <p>Si vous avez adopté les bonnes pratiques qui sont de prendre des sauvegardes régulières de votre
+                        site, récupérer une version ayant été faite avant le hack et restaurez cette version.</p>
+                    <p>Attention&nbsp;: si le hack a pu réussir, c’est que votre site était failible =&gt; mettez-le à
+                        jour et protégez-le. Ne vous arrêtez pas après l’avoir restauré.</p>
+                    <p style="color:red;font-weight:bold;">Restaurer le site =&gt; le mettre à jour =&gt; le protéger</p>
+                </section>
+                <section id="work-offline" data-transition="slide-in fade-out">
+                    <!-- Travaillez sur une version locale -->
+                    <h2>Travaillez sur une version locale</h2>
+                    <p>Même si votre site de production est hacké, il est préférable de travailler en local&nbsp;:
+                        prenez un backup de votre site et restaurez-le sur votre ordinateur.</p>
+                    <p>Vous aurez moins de stress et, de fait, vous aurez toujours un backup des fichiers au cas où…</p>
+                </section>
+                <section id="clean-tools" data-transition="slide">
+                    <!-- Les outils dont vous allez avoir besoin -->
+                    <h2>Les outils dont vous allez avoir besoin</h2>
+                    <ul>
+                        <li>Un éditeur de texte style <a href="https://notepad-plus-plus.org/fr/" title="Notepad++"
+                                target="_blank" rel="noopener noreferrer">Notepad++</a> càd permettant de sauver en
+                            UTF-8 NoBom</li>
+                        <li><a href="http://winmerge.org/?lang=fr" title="WinMerge" target="_blank" rel="noopener noreferrer">WinMerge</a>
+                            ou <a href="http://meldmerge.org/" title="MeldMerge++" target="_blank" rel="nofollow noopener noreferrer">MeldMerge</a>
+                            pour les comparaisons de fichiers</li>
+                        <li>Idéalement un excellent gestionnaire de fichiers permettant des recherches, d’avoir une vue
+                            « à plat », ... Personnellement, j’utilise <a href="http://www.xyplorer.com/" target="_blank"
+                                rel="nofollow noopener noreferrer">XYplorer</a>,
+                            pour Windows.</li>
+                    </ul>
+                    <p style="color:red;font-weight:bold;">Et surtout, vos yeux, votre maîtrise de Joomla!® et votre
+                        bon sens.</p>
+                </section>
+                <section id="dont_run_viruses" data-transition="convex">
+                    <!-- N’exécutez pas un virus -->
+                    <h2>N’exécutez pas un virus</h2>
+                    <p>Lorsque vous aurez détecté un fichier suspect sur votre serveur, n’y accédez surtout pas depuis
+                        une URL (ne surfez pas vers http://localhost/le-fichier-suspect.php) mais éditez le fichier
+                        pour en lire son contenu (depuis son client
+                        FTP pour un site distant).</p>
+                    <p style="padding:15px;color:red;font-weight:bold;border:1px solid red;">Accéder à un fichier par
+                        URL revient à l’exécuter</p>
+                </section>
+                <section id="need_help" data-transition="fade" data-transition-speed="slow">
+                    <!-- Besoin d'aide ? -->
+                    <h2>Besoin d'aide ?</h2>
+                    <p>Si vous avez besoin de l'aide d'un professionnel, n'hésitez pas à prendre contact avec moi, j'ai
+                        développé un scanner "DeepScan" permettant de nettoyer votre site web.</p>
+                    <p style="padding:15px;color:green;font-weight:bold;border:1px solid green;">
+                        <a style="color:green;" href="https://www.aesecure.com/fr/telechargement.html" rel="nofollow"
+                            title="Je nettoie votre site pour vous | aeSecure" target="_blank">https://www.aesecure.com/fr/telechargement.html</a></p>
+                </section>
+                <section id="protect" data-transition="concave">
+                    <!-- Protéger son site Joomla!® -->
+                    <h2>Protéger son site Joomla!®</h2>
+                    <p>Je vous invite à consulter le document “La sécurité et Joomla!®” pour apprendre à sécuriser
+                        votre site web afin de ne plus être victime de pirate&nbsp;:<br /><br /></p>
+                    <p style="padding:15px;color:green;font-weight:bold;border:1px solid green;"><a style="color:green;"
+                            href="https://www.aesecure.com/fr/blog/joomla-securite.html" title="Protéger son site Joomla!® | aeSecure"
+                            target="_blank" rel="nofollow noopener noreferrer">https://www.aesecure.com/fr/blog/joomla-securite.html</a></p>
+                </section>
+            </section>
+            <!-- Supprimer la menace -->
+
+            <section id="contact">
+                <!-- contact -->
+                <h2>Merci pour votre attention!</h2>
+                <div>
+                    <ul>
+                        <li>Blog: <a href="https://www.aesecure.com">aesecure.com</a></li>
+                        <li>Twitter: <a href="https://twitter.com/aesecure" target="_blank" rel="nofollow noopener noreferrer">@aeSecure</a></li>
+                        <li>Facebook: <a href="https://www.facebook.com/aesecure" target="_blank" rel="nofollow noopener noreferrer">aeSecure</a></li>
+                        <li>Slides: <a href="https://www.avonture.be" target="_blank" rel="noopener noreferrer">www.avonture.be</a></li>
+                        <li>Email: <span>christophe AT aesecure.com</span></li>
+                    </ul>
+                </div>
+                <img src="img/blank.png" data-src="img/logo.png" alt="logo aeSecure" height="200" style="border:none;box-shadow:none;" />
+                <div style="margin-top:45px;font-size:0.4em;">Slideshow: <a target="_blank" rel="nofollow noopener noreferrer"
+                        href="https://github.com/hakimel/reveal.js/">Reveal.js</a> (<a target="_blank" rel="nofollow noopener noreferrer"
+                        href="http://twitter.com/hakimel">@hakimel</a>)</div>
+            </section>
+
+        </div>
+        <!-- slides-->
+
+    </div>
+    <!-- reveal -->
+
+    <div id="logo">
+        <a href="https://www.aesecure.com" target="_blank" rel="noopener noreferrer"><img src="img/small_logo.png" alt="aeSecure, optimisation et sécurisation de vos sites web Apache" /></a>
+    </div>
+
+    <aside class="controls">
+        <a class="left" href="#">&#x25C4;</a>
+        <a class="right" href="#">&#x25BA;</a>
+        <a class="up" href="#">&#x25B2;</a>
+        <a class="down" href="#">&#x25BC;</a>
+    </aside>
+
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.js"></script>
+
+    <script>
+        // More info https://github.com/hakimel/reveal.js#configuration
+        Reveal.initialize({
+
+            // Push each slide change to the browser history
+            history: true,
+
+            // Display controls in the bottom right corner
+            controls: true,
+
+            // Display a presentation progress bar
+            progress: true,
+
+            // Display the page number of the current slide
+            slideNumber: true,
+
+            // Enable slide navigation via mouse wheel
+            mouseWheel: true,
+
+            // Transition style
+            transition: 'convex', // none/fade/slide/convex/concave/zoom
+
+            // Transition style for full page slide backgrounds
+            backgroundTransition: 'concave', // none/fade/slide/convex/concave/zoom
+
+            // Parallax background image
+            //parallaxBackgroundImage: 'img/background.png',
+            //parallaxBackgroundSize: '1917px 1080px',
+
+            // Number of pixels to move the parallax background per slide
+            // - Calculated automatically unless specified
+            // - Set to 0 to disable movement along an axis
+            //parallaxBackgroundHorizontal: 0,
+            //parallaxBackgroundVertical: 0,
+
+            // More info https://github.com/hakimel/reveal.js#dependencies
+            dependencies: [
+
+                {
+                    src: 'lib/js/classList.js',
+                    condition: function () {
+                        return !document.body.classList;
+                    }
+                },
+                {
+                    src: 'plugin/zoom-js/zoom.js',
+                    async: true,
+                    condition: function () {
+                        return !!document.body.classList;
+                    }
+                },
+                {
+                    src: 'plugin/notes/notes.js',
+                    async: true,
+                    condition: function () {
+                        return !!document.body.classList;
+                    }
+                },
+                {
+                    src: 'plugin/markdown/marked.js'
+                },
+                {
+                    src: 'plugin/markdown/markdown.js'
+                },
+                {
+                    src: 'plugin/notes/notes.js',
+                    async: true
+                },
+                {
+                    src: 'plugin/highlight/highlight.js',
+                    async: true,
+                    callback: function () {
+                        hljs.initHighlightingOnLoad();
+                    }
+                }
+            ]
+        });
+
+        Reveal.addEventListener('ready', function (event) {
+            var isMobileDevice = /(iphone|ipod|ipad|android)/gi.test(navigator.userAgent);
+
+            if (!isMobileDevice) {
+                document.getElementById('logo').style.display = 'inline';
+                document.getElementById('menu').style.display = 'inline';
+            }
+
+        });
+
+    </script>
+
+</body>
+
+</html>
